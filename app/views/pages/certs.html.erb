@@ -1,0 +1,62 @@
+<div class ="container">
+  <div class="row">
+   <% if !user_signed_in? && !admin_signed_in? %>
+   
+    <div class="col-md-4 col-md-offset-4">
+    <h2 class="text-center">Log in</h2>
+    <div class="well text-center">
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+      
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+      
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= link_to "View Certificates",user_path(id: current_user.id), class: 'btn btn-primary btn-lg btn-block' %>
+        <% end %>
+        <%else%>
+      </div>
+      </div>
+    <% end %>
+
+   <% if admin_signed_in? %>
+    <div class="col-md-3 col-md-offset-3">
+    <div class="well text-center">
+    <h2>Page Management</h2>
+    <%= link_to "Add New Project",new_project_path, class: 'btn btn-primary btn-lg btn-block' %>
+
+    </div>
+    </div>    
+    
+    <div class="col-md-3">
+    <div class="well text-center">
+    <h2>Certificate Management</h2>
+    <%= link_to "Add New Client",new_user_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <%= link_to "Upload New Certificates",new_upload_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <%= link_to "Manage Current Clients",users_path, class: 'btn btn-primary btn-lg btn-block' %>
+    </div>
+    </div>   
+    
+   <% end %>
+   
+
+           
+   </div>
+</div>

@@ -1,0 +1,18 @@
+<div class = "container">
+  <div class ="row">
+    <div class= "col-md-5 text-center">
+      <%= image_tag @project.avatar.url, class:'avatar-show-img'%>
+    </div>
+    
+    <div class ="col-md-7">
+     <h1><%= @project.title %></h1> 
+
+      <div class="well profile-block profile-description">
+
+        <%= @project.body %>
+      </div>
+
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+ <div class="container">
+  <div class="row">.
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="text-center">Current Clients</h1>
+      <p class ="text-center">List of all clients currently saved to the database</p>
+      <ul class="list-unstyled">
+        <%@users.each do |user|%>
+            <li>
+              <div class="well row <%= cycle('white-bg', '')%>">
+                <div class="col-sm-4 text-center">
+                  <p>Email</p>
+                  
+                  <h4><%= user.email %></h4>
+                  
+                </div>
+                <div class="col-sm-4 text-center">
+                  <p>Name</p>
+                  <h4><%= user.name %></h4>
+                </div>
+                
+                 <div class="col-sm-4 text-center">
+                  <p>Actions</p>
+                   <%= link_to user do %>
+                   View
+                   <%end%>&nbsp
+                   
+                   <%= link_to edit_user_path(user) do %>
+                   Edit
+                   <%end%>&nbsp
+
+                    <%= link_to "Delete", user_path(id: user.id), method: :delete,
+                    data: { confirm: "Are you sure you want to delete this user? All uploaded files for this user will also be deleted." } %>
+
+                </div>
+              </div>
+            </li>
+        <%end%>
+      </ul>
+     </div> 
+  </div>
+</div>
+

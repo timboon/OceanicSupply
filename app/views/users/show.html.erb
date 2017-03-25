@@ -1,0 +1,38 @@
+
+ <div class="container">
+  <div class="row">.
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="text-center">Certificate Database</h1>
+      <p class ="text-center">List of all certificates, click the file name to download the certificate</p>
+      <ul class="list-unstyled">
+        <% @user.uploads.each do |user| %>
+            <li>
+              <div class="well row <%= cycle('white-bg', '')%>">
+                <div class="col-sm-4 text-center">
+                  <p>File Name</p>
+                  <h4> <%= link_to  "#{h truncate((user.avatar_file_name), :length => 20)}", user.avatar.url(:original, false)%></h4>
+                  
+                </div>
+                <div class="col-sm-4 text-center">
+                 <p>Purchase Order</p>
+                <p>  <%= user.order%></p>
+                  <% if admin_signed_in? %>
+                    <%= link_to "Delete", upload_path(id: user.id), method: :delete,
+                    data: { confirm: "You sure?" } %>
+                  <% end %>
+              </div>
+                 <div class="col-sm-4 text-center">
+                 <p>Date Uploaded</p>
+                <p>  <%= user.avatar_updated_at.strftime('%F')%></p>
+                    <p>File Size</p>
+                  <%= number_to_human_size(user.avatar_file_size)%>
+              </div>
+
+            </li>
+            
+        <%end%>
+      </ul>
+     </div> 
+  </div>
+</div>
+

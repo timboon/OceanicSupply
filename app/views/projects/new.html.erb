@@ -1,0 +1,35 @@
+
+<div class="container">
+  <div class = "row">
+    <div class = "col-md-6 col-md-offset-3">
+      <h1 class = "text-center">Add a new project</h1>
+      <p class ="text-center">Add a new project to the site, aim for 400 words per project</p>
+      <div class="well">
+      
+
+        <%= form_for (@project), :html => { :multipart => true } do |f| %>
+          <div class="form-group">
+            <%= f.label "Project Title" %><br />
+            <%= f.text_field :title, class: 'form-control', autofocus: true %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label "Project Text" %><br />
+            <%= f.text_area :body, :cols => "70", :rows => "10", class: 'form-control' %>
+
+          </div>
+        
+          <div class="form-group">
+          <%= f.label "Project Photo" %>
+          <%= f.file_field :avatar, class: 'form-control' %>
+        </div>
+
+          <div class="form-group">
+            <%= f.submit "Add Project", class: 'btn btn-primary'  %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
