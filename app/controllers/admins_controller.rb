@@ -4,8 +4,6 @@ class AdminsController < ApplicationController
   
   def login
     
-    
-    
   end
 
 private
@@ -14,7 +12,5 @@ private
      redirect_to(certs_path)
     end
   end
-
-
 
 end
