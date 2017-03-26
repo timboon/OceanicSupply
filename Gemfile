@@ -6,7 +6,7 @@ gem 'rails', '5.0.0'
 #gem 'sqlite3'
 
 gem 'pg'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 #Use Puma as the app server
 gem 'puma'
 # Use SCSS for stylesheets
