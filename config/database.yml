@@ -1,6 +1,6 @@
 
   
-  # SQLite version 3.x
+# SQLite version 3.x
 #   gem install sqlite3
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
@@ -21,16 +21,14 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
 
 production:
-#  <<: *default
- # database: db/production.sqlite3
-     <<: *default
-    adapter: postgresql
-    encoding: unicode
-    database: <%= ENV['RDS_DB_NAME'] %>
-    username: <%= ENV['RDS_USERNAME'] %>
-    password: <%= ENV['RDS_PASSWORD'] %>
-    host: <%= ENV['RDS_HOSTNAME'] %>
-    port: <%= ENV['RDS_PORT'] %>
+  <<: *default
+  database: db/production.sqlite3 
