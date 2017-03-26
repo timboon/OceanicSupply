@@ -197,7 +197,7 @@ DEPENDENCIES
   jquery-rails (= 4.1.1)
   listen (= 3.0.5)
   paperclip (= 4.3.6)
-  pg (= 0.18.4)
+  pg
   puma
   rails (= 5.0.0)
   sass-rails (= 5.0.6)
