@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #before_action :admins_only, only: [:new, :create, :index, :edit, :update, :destroy]
+  before_action :admins_only, only: [:new, :create, :index, :edit, :update, :destroy]
   before_action :only_current_user, only: [:show]
   layout "certs_layout"
   
